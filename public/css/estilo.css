@@ -1,8 +1,13 @@
 html, body{
 	font-family: 'Dosis', sans-serif;
 	position: relative;
-	width: 100%;
-	height: 100%;
+	/*width: 100%;
+	height: 100%;*/
+	position: relative;
+}
+
+body {
+	margin-bottom: -60px;
 }
 
 .wrapper{
@@ -10,7 +15,7 @@ html, body{
 	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
-	background-position: center top;
+	background-position: center bottom;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -102,6 +107,39 @@ html, body{
 }
 
 
+
+.wrapper-runner-1{
+	background-image: url('../img/bg_runner.jpg');
+	background-attachment: fixed;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+}
+
+.fondo-semitransparente{
+	background-color: rgba(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.5);
+}
+
+.borde-cafe{
+	border: 1px solid #6C2E1C;
+}
+
+.barras-tablas{
+	overflow-x: auto;
+}
+
+.tablas-datos table thead th{
+	text-align: center;
+}
+
+.tablas-datos table tbody td{
+	text-transform: uppercase;
+}
 
 
 /*

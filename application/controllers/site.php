@@ -30,7 +30,7 @@ class Site extends CI_Controller {
 		$debug = false;
 		$data['debug'] = $debug;
 
-        $dataTitle['title'] = 'Bienvenido/a Tótem';
+        $dataTitle['title'] = 'Tótem Running';
         $dataContent['sedes'] = $this->db->get_where('sede', array('estado' => 1))->result_array() ;
 
 
@@ -43,8 +43,57 @@ class Site extends CI_Controller {
 	public function getTotemsPorSede(){
 		$debug = false;
         $data['debug'] = $debug;
+        $resultado = array();
 
-        $idSede = $this->uri->segment(3); //idSede
+        //idSede por GET
+        //$idSede = $this->uri->segment(3);
+
+        if(($this->input->post()!="")){
+	        //idSede por POST
+	        $idSede = $this->input->post('idSede');
+	        $dataSede = $this->db->get_where('sede', array('id' => $idSede, 'estado' => 1))->row() ;
+
+	        
+	        if($dataSede){
+				$dataTotemsM = $this->db->order_by("apellidos", "desc")->get_where('corredor', array('estado' => 1, 'id_sede' => $idSede, 'sexo' => 'M'))->result_array() ;
+				$dataTotemsF = $this->db->order_by("apellidos", "desc")->get_where('corredor', array('estado' => 1, 'id_sede' => $idSede, 'sexo' => 'F' ))->result_array() ;
+
+				if($dataTotemsM || $dataTotemsF){
+		        	$resultado = array(
+		                'codigo' => 1,
+		                'mensaje' => "Lista encontrada",
+		                'data' => array(
+		                            'dataSede' => $dataSede,
+		                            'dataTotemsM' => $dataTotemsM,
+		                            'dataTotemsF' => $dataTotemsF
+		                )
+		        	);
+				}else{
+					$resultado = array(
+		                'codigo' => 2,
+		                'mensaje' => "Sede existe pero no tiene corredores ingresados",
+		                'data' => array(
+		                            'dataSede' => $dataSede
+		                )
+		        	);
+				}
+	        	
+	        }else{
+	        	$resultado = array(
+	                'codigo' => -1,
+	                'mensaje' => "No existe sede con ese identificador"
+	        	);
+	        }
+        }else{
+            $resultado = array(
+                'codigo' => -1,
+                'Mensaje' => "No se recibio parametros respuestas");
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode( $resultado );
+
+
 	}
 
 }
