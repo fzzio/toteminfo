@@ -137,6 +137,10 @@ body {
 	text-align: center;
 }
 
+.tablas-datos table tbody{
+	
+}
+
 .tablas-datos table tbody td{
 	text-transform: uppercase;
 }

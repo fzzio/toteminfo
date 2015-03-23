@@ -180,7 +180,7 @@ class Admin extends CI_Controller {
 
         $crud->columns('id_sede', 'cedula', 'apellidos', 'nombres', 'sexo', 'estado_civil', 'fecha_nacimiento', 'nacionalidad', 'email', 'direccion', 'celular', 'otros_telefonos', 'contaco_emergencia', 'telefono_emergencia', 'tipo_sangre', 'talla_camiseta', 'alias', 'fecha_ingresototem', 'estado');
         $crud->fields('cedula', 'apellidos', 'nombres', 'sexo', 'estado_civil', 'fecha_nacimiento', 'nacionalidad', 'email', 'direccion', 'celular', 'otros_telefonos', 'contaco_emergencia', 'telefono_emergencia', 'tipo_sangre', 'talla_camiseta', 'alias', 'fecha_ingresototem', 'estado', 'id_sede');
-        $crud->required_fields('cedula', 'apellidos', 'nombres', 'sexo', 'estado_civil', 'fecha_nacimiento', 'nacionalidad', 'email', 'direccion', 'celular', 'contaco_emergencia', 'telefono_emergencia', 'tipo_sangre', 'talla_camiseta', 'alias', 'fecha_ingresototem', 'estado', 'id_sede');
+        $crud->required_fields('cedula', 'apellidos', 'nombres', 'sexo', 'estado_civil', 'fecha_nacimiento', 'nacionalidad', 'email', 'direccion', 'celular', 'contaco_emergencia', 'telefono_emergencia', 'talla_camiseta', 'alias', 'fecha_ingresototem', 'estado', 'id_sede');
 
         $crud->set_relation('id_sede', 'sede', 'nombre');
 
